@@ -50,6 +50,29 @@ function Auth() {
       setLoading(false)
     }
   }
+  async function handleForgotPassword() {
+  if (!email) {
+    setMessage('Please enter your email address first.')
+    return
+  }
+
+  setLoading(true)
+  setMessage('')
+
+  try {
+    const { error } = await supabase.auth.resetPasswordForEmail(email, {
+      redirectTo: `${window.location.origin}/reset-password`,
+    })
+
+    if (error) throw error
+
+    setMessage('Password reset email sent! Please check your inbox.')
+  } catch (error) {
+    setMessage(error.message)
+  } finally {
+    setLoading(false)
+  }
+}
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-[#fafaf7] px-6 py-12">
@@ -125,7 +148,6 @@ function Auth() {
                   className="w-full bg-transparent py-3.5 text-sm outline-none"
                 />
               </div>
-
               {isSignUp && (
                 <p className="mt-2 text-xs text-gray-400">
                   Use at least 6 characters.
