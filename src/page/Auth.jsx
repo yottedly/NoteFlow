@@ -148,6 +148,18 @@ function Auth() {
                   className="w-full bg-transparent py-3.5 text-sm outline-none"
                 />
               </div>
+              {!isSignUp && (
+  <div className="mt-2 text-right">
+    <button
+      type="button"
+      onClick={handleForgotPassword}
+      disabled={loading}
+      className="text-sm text-[#53664b] hover:underline disabled:opacity-50"
+    >
+      Forgot password?
+    </button>
+  </div>
+)}
               {isSignUp && (
                 <p className="mt-2 text-xs text-gray-400">
                   Use at least 6 characters.
