@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 import Auth from './page/Auth'
 import Dashboard from './page/Dashboard'
+import ResetPassword from './page/ResetPassword'
 import {
   ArrowRight,
   Check,
@@ -237,9 +238,10 @@ function App() {
     </div>
           }
         />
-
+      
         <Route path="/auth" element={<Auth />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/reset-password" element ={<ResetPassword />} />
       </Routes>
     </BrowserRouter>
   );
